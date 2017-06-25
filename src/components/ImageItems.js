@@ -1,30 +1,31 @@
 import React, { Component } from 'react';
-import images from '../data/data';
 import '../css/imageItems.css';
+import Utils from '../util/Util';
+import Animations from '../animations/imageAnimations'
 
 class Image extends Component {
   render() {
-    var domElements = [];
-    for(var i = 0; i < images.length; i++){
-        var ctr = Math.floor(Math.random()*images.length);
-        domElements.push('images/'+images[ctr]);
-    }
-    var st = {
-        animationDuration: '3s'
-    }
-      this.componentDidMount = function() {
-            // var $this = ReactDOM.findDOMNode('');
-            //console.log(document.getElementById("slot-one"))
-            var slotOne = document.getElementById(this.props.id);
-        slotOne.addEventListener("animationend", function() {
-            console.log("animation end")
-        }, false);
-    }
+    let animationDuration = this.props.duration;
+    let animationDelay = this.props.delay;
+    let Animation = Animations(animationDuration, animationDelay);
+    let generateList = Utils.getImages().map((img, index) =>{
+                            /*first and third rows will change their opacity after animation end */
+                            if(index === 0 || index === 2) {
+                                return  <li key={index}>
+                                            <img src={img} alt='a' style={Animation.darkAnimationRules}/>
+                                        </li>
+                            } else if (index === 1) {
+                                return  <li key={index}>
+                                            <img src={img} alt='a' style={Animation.pulseAnimationRules}/>
+                                        </li>
+                            }
+                            return  <li key={index}>
+                                        <img src={img} alt='a' />
+                                    </li>
+                        });
     return (
-      <ul id={this.props.id} className={this.props.class} style={st}>
-            {domElements.map(function(img, index){
-                return <li key={index}><img src={img} alt='a'/></li>
-            })}
+      <ul id={this.props.id} className='slots spin' style={Animation.animationDirationStyle}>
+            {generateList}
       </ul>
     );
   }

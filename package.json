@@ -9,6 +9,7 @@
     "react-websocket": "^1.1.7"
   },
   "devDependencies": {
+    "react-foundation": "^0.8.0",
     "react-scripts": "0.9.5",
     "socket.io": "^2.0.3",
     "ws": "^3.0.0"
