@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM  from 'react-dom';
 import WinningLine from './winning-line';
 import ImageItems from './ImageItems';
 import winningLine from '../../public/images/winning-line.png' ;
@@ -9,12 +8,12 @@ class Slot extends Component {
     var sprite = {
         height: '355px',
         overflow: 'hidden',
-        position: 'relative',
-        zIndex: '5'
+        position: 'relative'
     }
+    console.log(this.props.dur)
     return (
       <div className="Slot" style={sprite}>
-        <ImageItems id={'slot-one'} dekay={0}/>
+        <ImageItems id={'slot-one'} duration={this.props.dur} delay={0}/>
         <ImageItems id={'slot-two'} delay={0.8} />
         <ImageItems id={'slot-three'} delay={1} />
         <ImageItems id={'slot-four'} delay={1.2}/>

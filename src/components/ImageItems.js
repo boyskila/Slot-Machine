@@ -8,11 +8,11 @@ class Image extends Component {
       this.componentDidMount = function() {
            // var $this = ReactDOM.findDOMNode('');
             //console.log(document.getElementById("slot-one"))
-             var slotOne = document.getElementById(this.props.id);
-             setTimeout(()=>{
-             var slotOne = document.getElementById(this.props.id);
-                 slotOne.classList = 'bounce';
-             }, 3000)
+             // var slotOne = document.getElementById(this.props.id);
+             // setTimeout(()=>{
+             // var slotOne = document.getElementById(this.props.id);
+             //     slotOne.classList = 'bounce';
+             // }, 3000)
         //  slotOne.addEventListener("animationend", function() {
         //      this.classList = 'bounce';
         //  }, false);
@@ -21,6 +21,7 @@ class Image extends Component {
 
     let animationDuration = this.props.duration;
     let animationDelay = this.props.delay;
+    // console.log(animationDuration)
     let Animation = Animations(animationDuration, animationDelay);
     let generateList = Utils.getImages().map((img, index) =>{
                             /*first and third rows will change their opacity after animation end */

@@ -4,6 +4,7 @@
   "private": true,
   "main": "server.js",
   "dependencies": {
+    "express": "^4.15.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-websocket": "^1.1.7",

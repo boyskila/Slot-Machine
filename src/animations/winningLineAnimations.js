@@ -13,7 +13,7 @@ export default (delay) => {
         fadeInRules:  {
             animationName: 'fadeIn',
             animationDuration: '2s',
-            animationDelay: (delay + 1.5) || '8.5s',
+            animationDelay: (delay + 1.5) || '4.5s',
             animationFillMode: 'forwards'
         }
     }
