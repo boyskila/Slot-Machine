@@ -5,6 +5,20 @@ import Animations from '../animations/imageAnimations'
 
 class Image extends Component {
   render() {
+      this.componentDidMount = function() {
+           // var $this = ReactDOM.findDOMNode('');
+            //console.log(document.getElementById("slot-one"))
+             var slotOne = document.getElementById(this.props.id);
+             setTimeout(()=>{
+             var slotOne = document.getElementById(this.props.id);
+                 slotOne.classList = 'bounce';
+             }, 3000)
+        //  slotOne.addEventListener("animationend", function() {
+        //      this.classList = 'bounce';
+        //  }, false);
+      }
+
+
     let animationDuration = this.props.duration;
     let animationDelay = this.props.delay;
     let Animation = Animations(animationDuration, animationDelay);
@@ -24,7 +38,7 @@ class Image extends Component {
                                     </li>
                         });
     return (
-      <ul id={this.props.id} className='slots spin' style={Animation.animationDirationStyle}>
+      <ul id={this.props.id} className='slots spin' style={Animation.animationDurationStyle}>
             {generateList}
       </ul>
     );

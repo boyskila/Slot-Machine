@@ -18,6 +18,24 @@ const pulseAnimation = `
         100% { transform: scale(1); }
     }
 `
+const bounceAnimation = `
+    @keyframes bounceInDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-2000px);
+        }
+        60% {
+            opacity: 1;
+            transform: translateY(30px);
+        }
+        80% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+`
 Utils.injectStyle(darkAnimation);
 Utils.injectStyle(pulseAnimation);
 
@@ -34,9 +52,14 @@ export default  (duration, delay) => {
             animation: 'dark 2s forwards',
             animationDelay: duration || '8s'
         },
-        animationDirationStyle: {
-            animationDuration: duration || '7s',
+        animationDurationStyle: {
+            animationDuration: duration || '3s',
             animationDelay: delay + 's'
+        },
+        bounceAnimationRules: {
+            animationName: 'bounceInDown',
+            animationDuration: '2s',
+            animationFillMode: 'both'
         }
     }
 }
