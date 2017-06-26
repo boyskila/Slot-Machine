@@ -1,13 +1,24 @@
-@keyframes play {
+@keyframes roll {
     0% {
         margin-top: -4000px;
-        /*-webkit-transition: all 0.3s;*/
-    }
+	}
+	96%{
+		transform: translateY(20px);
+	}
+    97%{
+		transform: translateY(-1px);
+	}
+    98%{
+		transform: translateY(5px);
+	}
+	100% {
+		transform: translateY(0);
+	}
     
 }
 
 .spin {
-    animation:play;
+    animation:roll;
 }
 ul {
     padding: 0;

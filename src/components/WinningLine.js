@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import winningLine from '../../public/images/winning-line.png' ;
-import '../css/winningLine.css'
+import '../css/winning-line.css'
 import WinningLineAnimations from '../animations/winningLineAnimations';
 
 class WinningLine extends Component {

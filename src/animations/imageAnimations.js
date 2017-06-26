@@ -25,17 +25,17 @@ export default  (duration, delay) => {
     return {
         pulseAnimationRules: {
             animationName: 'pulse-animation',
-            animationDuration: '3s',
+            animationDuration: '2s',
             animationTimingFunction: 'linear',
             animationFillMode: 'forwards',
-            animationDelay: duration || '4.5s'
+            animationDelay: (duration + 1.5 + 's') || '4.5s'
         },
         darkAnimationRules: {
-            animation: 'dark 2s forwards',
-            animationDelay: duration || '4.5s'
+            animation: 'dark 1s forwards',
+            animationDelay: (duration + 1.5 + 's') || '4.5s'
         },
         animationDurationStyle: {
-            animationDuration: duration || '3s',
+            animationDuration: duration + 's' || '3s',
             animationDelay: delay + 's'
         },
         bounceAnimationRules: {

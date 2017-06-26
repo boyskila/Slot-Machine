@@ -1,38 +1,23 @@
 import React, { Component } from 'react';
-import Slot from './slot';
-// import Websocket from 'react-websocket';
-import SocketIOClient from 'socket.io-client';
+import SlotContainer from './SlotContainer';
 
 class SlotOverlay extends Component {
   constructor(props) {
     super(props);
-    this.socket = SocketIOClient('http://localhost:4000');
     this.newGame = this.newGame.bind(this);
     this.state = {
-        game: () => <Slot />,
-        speed: 0
-    };
+        game: () => <SlotContainer />
+    }
+    
   }
   newGame () {
     this.setState({
-        game: () => <Slot />
+        game: () => <SlotContainer />
     });
   }
- 
 
-  componentWillMount(){
-  }
- 
   render() {
-
-    let that = this;
-    this.socket.on('message', (data) => {
-        that.setState({
-          speed: data.speed
-        })
-    })
-    // console.log(this.state.speed)
-    const Slot = this.state.game;
+    var SlotContainer = this.state.game;
     let styles = {
       backgroundImage: "url('/slot-bg.png')",
       backgroundSize: '1000px 365px',
@@ -50,8 +35,9 @@ class SlotOverlay extends Component {
     }
     return (
       <div className="App" style={styles}>
-          <Slot name={this.state.speed} />
+          <SlotContainer />
           <button id="button-stop" onClick={this.newGame} style={buttonStyles}> Play Again</button>
+      
       </div>
     );
   }
