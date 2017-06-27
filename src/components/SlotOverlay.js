@@ -6,32 +6,31 @@ class SlotOverlay extends Component {
   constructor(props) {
     super(props);
     this.socket = SocketIOClient('http://localhost:4000');
-    this.newGame = this.newGame.bind(this);
+    this.socket.on('connect', () => console.log('Listen for messages on port 4000'));
+    this.setNewGame = this.setNewGame.bind(this);
+    this.runNewGame = this.runNewGame.bind(this);
     this.state = {
-        game: () => <SlotContainer />
+        speed: 3,
+        game: () => <SlotContainer speed={this.state.speed}/>
     }
-    
   }
-  newGame (){
+  runNewGame(){
+    this.setNewGame(this.state.speed)
+  }
+  setNewGame (duration){
     this.setState({
-        game: () => <SlotContainer />
+        speed: duration || 3,
+        game: () => <SlotContainer speed={this.state.speed}/>
     });
   }
-  shouldComponentUpdate(){
+  componentWillMount(){
       this.socket.on('message', (data) => {
-        this.newGame();
+        this.setNewGame(data.speed);
     });
-    return true;
   }
-
+  
   render() {
     var SlotContainer = this.state.game;
-    var styles = {
-      backgroundImage: "url('/slot-bg.png')",
-      backgroundSize: '1000px 365px',
-      backgroundRepeat: 'no-repeat',
-      margin: '100px',
-    }
     var buttonStyles = {
         margin: '30px 370px',
         width: '100px',
@@ -42,10 +41,9 @@ class SlotOverlay extends Component {
         borderRadius: '5px'
     }
     return (
-      <div className="App" style={styles}>
+      <div className="App" >
           <SlotContainer />
-          <button id="button-stop" onClick={this.newGame} style={buttonStyles}> Play Again</button>
-      
+          <button id="button-stop" onClick={this.runNewGame} style={buttonStyles}> Play Again</button>
       </div>
     )
   }

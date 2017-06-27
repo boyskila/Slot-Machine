@@ -2,7 +2,7 @@
   "name": "slot-game",
   "version": "0.1.0",
   "private": true,
-  "main": "server.js",
+  "main": "server/server.js",
   "dependencies": {
     "express": "^4.15.3",
     "react": "^15.6.1",

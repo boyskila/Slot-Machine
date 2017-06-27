@@ -8,11 +8,17 @@ var server = http
       res.end(fs.readFileSync(__dirname + '/server/index.html'));
     })
     .listen(4000, () => console.log('Listening at: http://localhost:4000'));
-
+var s = [];
 socketio.listen(server).on('connection', (socket) => {
-console.log(socket.id)
-//   socket.on('join', function(data) {
-//     console.log(data)
-//   });
-    socket.emit('message', {speed: 5});
+    if(s.indexOf(socket.id) < 0) {
+        s.push(socket.id);
+    }
+console.log(s)
+  socket.on('join', function(data) {
+    s.forEach((id) => {
+        if(socket.id !== id) {
+            socket.to(id).emit('message', {speed: data})
+        }
+    })
+  });
 });

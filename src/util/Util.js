@@ -17,7 +17,6 @@ export default {
                 .opacity = op;
     },
     injectStyle : (style) => {
-
         var styleElement = document.createElement('style');
         let styleSheet = null;
 

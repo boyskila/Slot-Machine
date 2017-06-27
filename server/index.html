@@ -27,6 +27,7 @@
         $(document).ready(function(){
           var socket = io.connect('http://localhost:4000');
           $('.button').click(function(){
+            console.log($('#txt').val())
             socket.emit('join', $('#txt').val())
           })
         })
