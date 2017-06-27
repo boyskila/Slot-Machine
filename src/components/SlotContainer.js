@@ -6,16 +6,15 @@ import winningLine from '../../public/images/winning-line.png' ;
 class SlotContainer extends Component {
   
   render() {
-    var slotStyles = {
+    var slotContainerStyles = {
         height: '355px',
         overflow: 'hidden',
         marginTop: '152px',
         marginLeft: '142px'
     }
     var speed = this.props.speed;
-    console.log(speed)
     return (
-      <div className="Slot" style={slotStyles}>
+      <div className="SlotContainer" style={slotContainerStyles}>
         <Slot id={'slot-one'} duration={speed} delay={0}/>
         <Slot id={'slot-two'} duration={speed} delay={0.8} />
         <Slot id={'slot-three'} duration={speed} delay={1} />

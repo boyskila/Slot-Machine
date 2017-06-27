@@ -1,3 +1,4 @@
+
 export default {
     getImages : () => {
         var images = [];
@@ -5,7 +6,7 @@ export default {
             for(let i = 1; i < 11; i++){
                 //1 - 11 rand
                 var n = Math.floor(Math.random() * 11) + 1;
-                images.push('images/symbol' + n + '.png');
+                images.push(`images/symbol${n}.png`);
             }
         }
         return images;
