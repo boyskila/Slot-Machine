@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../css/slot.css';
 import Utils from '../util/Util';
-import Animations from '../animations/imageAnimations'
+import Animations from '../animations/imageAnimations';
 
 class Image extends Component {
   render() {
@@ -13,7 +13,7 @@ class Image extends Component {
 
     let generateList = Utils
         .getImages()
-        .map((img, index) =>{
+        .map((img, index) => {
             /*first and third rows will change their opacity after animation end */
             if(index === 0 || index === 2) {
                 return  <li key={index}>
@@ -25,7 +25,7 @@ class Image extends Component {
                         </li>
             }
             return  <li key={index}>
-                        <img src={img} alt='a' />
+                        <img src={img} alt='a'/>
                     </li>
         });
     return (
