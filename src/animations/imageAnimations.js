@@ -2,8 +2,12 @@ import Utils from '../util/Util';
 
 const darkAnimation = `
     @keyframes dark {
-        0%   { opacity:1; }
-        100% { opacity:0.3; }
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0.3;
+        }
     }
 `
 const pulseAnimation = `
@@ -18,6 +22,7 @@ const pulseAnimation = `
         100% { transform: scale(1); }
     }
 `
+//add key frames to the stylesheet
 Utils.injectStyle(darkAnimation);
 Utils.injectStyle(pulseAnimation);
 

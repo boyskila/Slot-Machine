@@ -9,4 +9,10 @@ var server = http
     })
     .listen(4000, () => console.log('Listening at: http://localhost:4000'));
 
-socketio.listen(server).on('connection', (socket) => socket.emit('message', {speed:3}));
+socketio.listen(server).on('connection', (socket) => {
+console.log(socket.id)
+//   socket.on('join', function(data) {
+//     console.log(data)
+//   });
+    socket.emit('message', {speed: 5});
+});

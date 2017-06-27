@@ -8,7 +8,6 @@ class SlotContainer extends Component {
   constructor(props) {
     super(props);
     this.socket = SocketIOClient('http://localhost:4000');
-    console.log(this.props.name)
     this.state = {
         speed: 0
     }
@@ -26,15 +25,15 @@ class SlotContainer extends Component {
         overflow: 'hidden',
         position: 'relative'
     }
+    var speed = this.state.speed;
     return (
-      
       <div className="Slot" style={sprite}>
-        <Slot id={'slot-one'} duration={this.state.speed} delay={0}/>
-        <Slot id={'slot-two'} duration={this.state.speed} delay={0.8} />
-        <Slot id={'slot-three'} duration={this.state.speed} delay={1} />
-        <Slot id={'slot-four'} duration={this.state.speed} delay={1.2}/>
-        <Slot id={'slot-five'} duration={this.state.speed} delay={1.4}/>
-        <WinningLine delay={this.state.speed} image={winningLine}/>
+        <Slot id={'slot-one'} duration={speed} delay={0}/>
+        <Slot id={'slot-two'} duration={speed} delay={0.8} />
+        <Slot id={'slot-three'} duration={speed} delay={1} />
+        <Slot id={'slot-four'} duration={speed} delay={1.2}/>
+        <Slot id={'slot-five'} duration={speed} delay={1.4}/>
+        <WinningLine delay={speed} image={winningLine}/>
       </div>
     );
   }

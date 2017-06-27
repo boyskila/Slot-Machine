@@ -1,30 +1,38 @@
 import React, { Component } from 'react';
 import SlotContainer from './SlotContainer';
+import SocketIOClient from 'socket.io-client';
 
 class SlotOverlay extends Component {
   constructor(props) {
     super(props);
+    this.socket = SocketIOClient('http://localhost:4000');
     this.newGame = this.newGame.bind(this);
     this.state = {
         game: () => <SlotContainer />
     }
     
   }
-  newGame () {
+  newGame (){
     this.setState({
         game: () => <SlotContainer />
     });
   }
+  shouldComponentUpdate(){
+      this.socket.on('message', (data) => {
+        this.newGame();
+    });
+    return true;
+  }
 
   render() {
     var SlotContainer = this.state.game;
-    let styles = {
+    var styles = {
       backgroundImage: "url('/slot-bg.png')",
       backgroundSize: '1000px 365px',
       backgroundRepeat: 'no-repeat',
       margin: '100px',
     }
-    let buttonStyles = {
+    var buttonStyles = {
         margin: '30px 370px',
         width: '100px',
         height: '45px',
@@ -39,7 +47,7 @@ class SlotOverlay extends Component {
           <button id="button-stop" onClick={this.newGame} style={buttonStyles}> Play Again</button>
       
       </div>
-    );
+    )
   }
 }
 
