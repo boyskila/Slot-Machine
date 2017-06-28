@@ -1,0 +1,16 @@
+.Scores img {
+	width: 35px;
+	height: 35px;
+}
+.Scores img {
+	margin-bottom: 8.7px;
+}
+
+.Scores img:first-child {
+	margin-top: 10px;
+}
+
+.Scores {
+	float: left;
+	margin-left: 40px;
+}
