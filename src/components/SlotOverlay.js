@@ -23,11 +23,11 @@ class SlotOverlay extends Component {
     }
   }
   runNewGame(){
-    this.setNewGame(this.state.speed)
+    this.setNewGame()
   }
   setNewGame (duration){
     this.setState({
-        speed: duration || defaultSpeed,
+        speed: duration || this.state.speed,
         game: () => <SlotContainer speed={this.state.speed} />
     });
   }
