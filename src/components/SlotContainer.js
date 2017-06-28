@@ -2,31 +2,19 @@ import React, { Component } from 'react';
 import Slot from './Slot';
 import WinningLine from './WinningLine';
 import winningLine from '../../public/images/winning-line.png' ;
-import SocketIOClient from 'socket.io-client';
 
 class SlotContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.socket = SocketIOClient('http://localhost:4000');
-    this.state = {
-        speed: 0
-    }
-  }
-  componentDidMount(){
-    this.socket.on('message', (data) => {
-        this.setState({
-          speed: data.speed
-        })
-    });
- }
+  
   render() {
-    var slotStyles = {
+    var slotContainerStyles = {
         height: '355px',
-        overflow: 'hidden'  
+        overflow: 'hidden',
+        marginTop: '152px',
+        marginLeft: '142px'
     }
-    var speed = this.state.speed;
+    var speed = this.props.speed;
     return (
-      <div className="Slot" style={slotStyles}>
+      <div className="SlotContainer" style={slotContainerStyles}>
         <Slot id={'slot-one'} duration={speed} delay={0}/>
         <Slot id={'slot-two'} duration={speed} delay={0.8} />
         <Slot id={'slot-three'} duration={speed} delay={1} />

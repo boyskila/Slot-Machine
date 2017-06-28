@@ -1,37 +1,46 @@
 import React, { Component } from 'react';
 import SlotContainer from './SlotContainer';
-import SocketIOClient from 'socket.io-client';
+import SocketIO from 'socket.io-client';
+
+const defaultSpeed = 3;
+const PORT = 'http://localhost:4000';
 
 class SlotOverlay extends Component {
   constructor(props) {
     super(props);
-    this.socket = SocketIOClient('http://localhost:4000');
-    this.newGame = this.newGame.bind(this);
+    this.socket = SocketIO(PORT).connect();
+    this.socket.on('connect', () => console.log(`Listen for messages on ${PORT}`));
+    this.socket.on('disconnect', () => {
+      this.setState({
+          speed: defaultSpeed
+      });
+    })
+    this.setNewGame = this.setNewGame.bind(this);
+    this.runNewGame = this.runNewGame.bind(this);
     this.state = {
-        game: () => <SlotContainer />
+        speed: defaultSpeed,
+        game: () => <SlotContainer speed={this.state.speed}/>
     }
-    
   }
-  newGame () {
+  runNewGame(){
+    this.setNewGame()
+  }
+  setNewGame (duration){
     this.setState({
-        game: () => <SlotContainer />
-    });
-  }
-  componentDidMount(){
-    this.socket.on('message', (data) => {
-        this.newGame();
+        speed: duration || this.state.speed,
+        game: () => <SlotContainer speed={this.state.speed} />
     });
   }
 
+  componentWillMount(){
+      this.socket.on('message', (data) => {
+        this.setNewGame(data.speed);
+    });
+  }
+  
   render() {
     var SlotContainer = this.state.game;
-    let styles = {
-      backgroundImage: "url('/slot-bg.png')",
-      backgroundSize: '1000px 365px',
-      backgroundRepeat: 'no-repeat',
-      margin: '100px'
-    }
-    let buttonStyles = {
+    var buttonStyles = {
         margin: '30px 370px',
         width: '100px',
         height: '45px',
@@ -40,12 +49,13 @@ class SlotOverlay extends Component {
         border: '0',
         borderRadius: '5px'
     }
+
     return (
-      <div className="App" style={styles}>
+      <div className="App" >
           <SlotContainer />
-          <button id="button-stop" onClick={this.newGame} style={buttonStyles}> Play Again</button>
+          <button id="button-play" onClick={this.runNewGame} style={buttonStyles}> Play Again</button>
       </div>
-    );
+    )
   }
 }
 

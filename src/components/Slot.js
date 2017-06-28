@@ -6,10 +6,10 @@ import Animations from '../animations/imageAnimations';
 class Image extends Component {
   render() {
 
-    let animationDuration = this.props.duration;
-    let animationDelay = this.props.delay;
+    var animationDuration = this.props.duration;
+    var animationDelay = this.props.delay;
 
-    let Animation = Animations(animationDuration, animationDelay);
+    var Animation = Animations(animationDuration, animationDelay);
 
     let generateList = Utils
         .getImages()
