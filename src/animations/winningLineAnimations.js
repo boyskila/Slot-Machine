@@ -2,10 +2,10 @@ import Utils from '../util/Util';
 
 const fadeInAnimation = `
 	@keyframes fadeIn {
-		0% {
+		from {
 			opacity: 0;
 		}
-		100% {
+		to {
 			opacity: 1;
 		}
 	}

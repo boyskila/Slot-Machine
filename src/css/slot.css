@@ -1,5 +1,5 @@
 @keyframes roll {
-	0% {
+	from {
 		margin-top: -4000px;
 	}
 	96%{
@@ -11,10 +11,10 @@
 	98%{
 		transform: translateY(5px);
 	}
-	100% {
+	to {
 		transform: translateY(0);
 	}
-	
+
 }
 
 .spin {
