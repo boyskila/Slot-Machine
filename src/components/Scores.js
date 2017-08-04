@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import '../css/scores.css';
+import _times from 'lodash.times'
+
 class Scores extends Component {
-  render() {
-    var helper = [1,2,3,4,5,6,7,8];
-    var images = helper.map((i) => <img src={`images/symbol${i}.png`} alt="a" />);
-    return (
-      <div className="Scores">
-            {images}
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className="Scores">
+				{
+					_times(8, (i) => <img key={i} src={`images/symbol${i+1}.png`} alt="a" />)
+				}
+			</div>
+		);
+	}
 }
 export default Scores;

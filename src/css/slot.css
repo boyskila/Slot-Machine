@@ -1,55 +1,55 @@
 @keyframes roll {
-    0% {
-        margin-top: -4000px;
+	0% {
+		margin-top: -4000px;
 	}
 	96%{
 		transform: translateY(20px);
 	}
-    97%{
+	97%{
 		transform: translateY(-1px);
 	}
-    98%{
+	98%{
 		transform: translateY(5px);
 	}
 	100% {
 		transform: translateY(0);
 	}
-    
+	
 }
 
 .spin {
-    animation:roll;
+	animation:roll;
 }
 ul {
-    padding: 0;
-    float: left;
-    list-style-type: none;
-    margin: 0;
-    margin-top: 3px;
-    overflow: hidden;
+	padding: 0;
+	float: left;
+	list-style-type: none;
+	margin: 0;
+	margin-top: 3px;
+	overflow: hidden;
 }
 li {
-    margin-bottom: 3px;
+	margin-bottom: 3px;
 }
 #slot-one {
-    margin-left: 4px;
+	margin-left: 4px;
 }
 #slot-two {
-    margin-left: 4.5px;
+	margin-left: 4.5px;
 }
 #slot-three {
-    margin-left: 5.5px;
+	margin-left: 5.5px;
 }
 #slot-four {
-    margin-left: 5.4px;
+	margin-left: 5.4px;
 }
 #slot-five{
-    margin-left: 5.4px;
+	margin-left: 5.4px;
 }
 
 img {
-    width: 134px;
-    height: 115px;
-    margin: 0 auto;
-    display: block;
+	width: 134px;
+	height: 115px;
+	margin: 0 auto;
+	display: block;
 }
